@@ -1,0 +1,84 @@
+<p-toolbar>
+  <div class="p-toolbar-group-left">
+    <button
+      pButton
+      label="Novo Assunto"
+      icon="pi pi-plus"
+      style="background-color: #28a745; border-color: #28a745; color: white;"
+      (click)="abrirCadastroDialog()">
+    </button>
+  </div>
+</p-toolbar>
+
+<p-table [value]="assuntos" [style]="{'width': '100%'}">
+  <ng-template pTemplate="header">
+    <tr>
+      <th style="width: 10%;">Código</th>
+      <th>Nome</th>
+      <th style="width: 15%;">Ações</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-assunto>
+    <tr>
+      <td>{{ assunto.cod }}</td>
+      <td>{{ assunto.descricao }}</td>
+      <td>
+        <button
+          pButton
+          class="m-1"
+          icon="pi pi-pencil"
+          style="color: white; background-color: #007bff; border-color: #007bff;"
+          (click)="abrirCadastroDialog(assunto)">
+        </button>
+        <button
+          pButton
+          class="m-1"
+          icon="pi pi-trash"
+          style="color: white; background-color: #dc3545; border-color: #dc3545;"
+          (click)="deletarAssunto(assunto.cod)">
+        </button>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
+
+<p-dialog [(visible)]="cadastroDialog"
+          [header]="titleCadastroDialog"
+          [style]="{'width': '400px', 'border-radius': '8px', 'box-shadow': '0 4px 10px rgba(0, 0, 0, 0.3)'}"
+          [modal]="true"
+          [closable]="true">
+  <div class="p-fluid">
+    <div class="field">
+      <label for="nome">Descrição:</label>
+      <input
+        pInputText
+        id="nome"
+        placeholder="Digite a descrição do assunto"
+        [(ngModel)]="assunto.descricao"
+        [ngClass]="{'p-invalid': !assunto.descricao && submitted}"
+        style="padding: 10px; font-size: 14px; border-radius: 5px; border: 1px solid #ccc;"/>
+      <small *ngIf="!assunto.descricao && submitted" class="p-error">A descrição é obrigatória.</small>
+    </div>
+  </div>
+  <p-footer>
+    <div class="p-d-flex p-jc-end">
+      <button
+        pButton
+        label="Cancelar"
+        icon="pi pi-times"
+        style="background-color: #dc3545; border-color: #dc3545; color: white; margin-right: 10px;"
+        (click)="fecharDialog()">
+      </button>
+      <button
+        pButton
+        label="Salvar"
+        icon="pi pi-check"
+        style="background-color: #28a745; border-color: #28a745; color: white;"
+        (click)="validarSalvar()">
+      </button>
+    </div>
+  </p-footer>
+</p-dialog>
+
+<p-confirmDialog></p-confirmDialog>
+<p-toast></p-toast>

@@ -1,1 +1,41 @@
 /* You can add global styles to this file, and also import other style files */
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+@import "primeicons/primeicons.css";
+
+.p-invalid {
+  border-color: #dc3545 !important;
+  box-shadow: 0 0 5px rgba(220, 53, 69, 0.5) !important;
+}
+
+.p-error {
+  color: #dc3545;
+  font-size: 0.875rem;
+  margin-top: 4px;
+}
+
+.p-confirm-dialog {
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.p-confirm-dialog .p-dialog-header {
+  background-color: gray;
+  color: #fff;
+}
+
+.p-confirm-dialog .p-dialog-content {
+  font-size: 1rem;
+}
+
+.p-confirm-dialog .p-dialog-footer button:first-child {
+  background-color: #dc3545;
+  border-color: #4c0a15;
+  margin: 2px;
+}
+
+.p-confirm-dialog .p-dialog-footer button:last-child {
+  background-color: #28a745;
+  border-color: #0e3a17;
+  margin: 2px;
+}
